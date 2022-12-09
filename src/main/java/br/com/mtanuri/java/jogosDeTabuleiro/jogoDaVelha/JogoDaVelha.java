@@ -64,6 +64,19 @@ public class JogoDaVelha {
         System.out.println();
     }
 
+    private static boolean isFimDeJogo() {
+        if (obterVencedor() != null)
+            return true;
+
+        for (CasaDoTabuleiro[] i : tabuleiro.casas) {
+            for (CasaDoTabuleiro j : i) {
+                if (j.peca == null)
+                    return false;
+            }
+        }
+        return true;
+    }
+
     private static void novaRodada(Jogadores jogador) {
         String coordinates = obterCoordenadasViaTerminal(jogador);
         efetuaJogada(coordinates, jogador);
@@ -126,19 +139,6 @@ public class JogoDaVelha {
 
         out.println("==================================");
         imprimirTabuleiro();
-    }
-
-    private static boolean isFimDeJogo() {
-        if (obterVencedor() != null)
-            return true;
-
-        for (CasaDoTabuleiro[] i : tabuleiro.casas) {
-            for (CasaDoTabuleiro j : i) {
-                if (j.peca == null)
-                    return false;
-            }
-        }
-        return true;
     }
 
     private static Jogadores obterVencedor() {
