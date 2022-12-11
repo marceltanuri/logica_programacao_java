@@ -36,32 +36,15 @@ public class JogoDaVelha {
             sc.close();
     }
 
+    private static void imprimirTabuleiro() {
+        System.out.println(tabuleiro.imprimir());
+    }
+
+
     private static void imprimeBannerDeInicioDoJogo() {
         out.println("========================");
         out.println("==== Jogo da Velha =====");
         out.println("========================");
-    }
-
-    public static void imprimirTabuleiro() {
-
-        String identificadorDasColunasDoTabuleiro = "  |  A  |  B  |  C  |";
-        System.out.println(identificadorDasColunasDoTabuleiro);
-
-        for (int i = 0; i < tabuleiro.casas.length; i++) {
-
-            String identificadorDasLinhas = (i + 1) + " |  ";
-            System.out.print(identificadorDasLinhas);
-
-            for (int j = 0; j < tabuleiro.casas[i].length; j++) {
-
-                System.out.print(
-                    tabuleiro.casas[i][j].peca != null ? tabuleiro.casas[i][j].peca.getNome() + "  |  "
-                                : "   |  ");
-            }
-
-            System.out.println();
-        }
-        System.out.println();
     }
 
     private static boolean isFimDeJogo() {
@@ -90,7 +73,8 @@ public class JogoDaVelha {
     }
 
     private static void efetuaJogada(String coordenadas, Jogadores jogador) {
-        CasaDoTabuleiro casaDoTabuleiro = obterCasaDoTabuleiro(coordenadas);
+        CasaDoTabuleiro casaDoTabuleiro = tabuleiro.obterCasasPor(coordenadas);
+        System.out.println(casaDoTabuleiro.getPosicao());
         if (casaDoTabuleiro.estaOcupada()){
             out.println("Casa já ocupada, tente novamente");
             novaRodada(jogador);
@@ -98,34 +82,6 @@ public class JogoDaVelha {
         else {
             PecaDoTabuleiro peca = new JogoDaVelha().new PecaDoTabuleiroJogoDaVelha(jogador.nome);
             casaDoTabuleiro.peca = peca;
-        }
-    }
-
-    private static CasaDoTabuleiro obterCasaDoTabuleiro(String coordenadas) {
-        switch (coordenadas) {
-            case "A1":
-                return tabuleiro.casas[0][0];
-            case "A2":
-                return tabuleiro.casas[1][0];
-            case "A3":
-                return tabuleiro.casas[2][0];
-
-            case "B1":
-                return tabuleiro.casas[0][1];
-            case "B2":
-                return tabuleiro.casas[1][1];
-            case "B3":
-                return tabuleiro.casas[2][1];
-
-            case "C1":
-                return tabuleiro.casas[0][2];
-            case "C2":
-                return tabuleiro.casas[1][2];
-            case "C3":
-                return tabuleiro.casas[2][2];
-
-            default:
-                return null;
         }
     }
 
