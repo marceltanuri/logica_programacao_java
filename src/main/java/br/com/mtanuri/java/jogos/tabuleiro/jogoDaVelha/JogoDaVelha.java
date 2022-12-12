@@ -1,12 +1,12 @@
-package br.com.mtanuri.java.jogosDeTabuleiro.jogoDaVelha;
+package br.com.mtanuri.java.jogos.tabuleiro.jogoDaVelha;
 
 import static java.lang.System.out;
 
 import java.util.Scanner;
 
-import br.com.mtanuri.java.jogosDeTabuleiro.CasaDoTabuleiro;
-import br.com.mtanuri.java.jogosDeTabuleiro.PecaDoTabuleiro;
-import br.com.mtanuri.java.jogosDeTabuleiro.Tabuleiro;
+import br.com.mtanuri.java.jogos.CasaDoTabuleiro;
+import br.com.mtanuri.java.jogos.PecaDoTabuleiro;
+import br.com.mtanuri.java.jogos.Tabuleiro;
 
 public class JogoDaVelha {
 

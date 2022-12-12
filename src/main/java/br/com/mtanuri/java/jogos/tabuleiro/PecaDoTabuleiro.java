@@ -1,4 +1,4 @@
-package br.com.mtanuri.java.jogosDeTabuleiro;
+package br.com.mtanuri.java.jogos.tabuleiro;
 
 public abstract class PecaDoTabuleiro {
 
