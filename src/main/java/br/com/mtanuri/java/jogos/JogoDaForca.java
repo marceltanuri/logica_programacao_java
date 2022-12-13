@@ -172,10 +172,12 @@ public class JogoDaForca {
             "Zebra",
             "Zorrilho" };
 
-    public static String sorteioDePalavra() {
+    private static String palavraASerDescoberta;
 
+    private static char[] letrasJaDecifradas;
+
+    public static String sorteioDePalavra() {
         int numeroRandomico = ThreadLocalRandom.current().nextInt(palavras.length);
-        
         return palavras[numeroRandomico];
     }
 
@@ -183,11 +185,19 @@ public class JogoDaForca {
         return "__ __ __ __ __";
     }
 
-    public static void main(String[] args) {
-        int count = 0;
-        while(count<10){
-            System.out.println(sorteioDePalavra());
-            count++;
+    private static char[] constroiArrayDeLetrasASeremDecifradas() {
+        char[] charArray = palavraASerDescoberta.toCharArray();
+        for (int i = 0; i < charArray.length; i++) {
+            if (charArray[i] != ' ' && charArray[i] != '-') {
+                charArray[i]='_';
+            }
         }
+        return charArray;
+    }
+
+    public static void main(String[] args) {
+        palavraASerDescoberta = sorteioDePalavra();
+        char[] letrasASeremDecifradas = constroiArrayDeLetrasASeremDecifradas();
+        System.out.println(letrasASeremDecifradas);
     }
 }
